@@ -16,19 +16,16 @@ def max_pairwise_product_naive(n, a):
 # instated of iterate through two indices which is O(n^2) get first one then next one alone
 
 def max_pairwise_product(n, a):
-    max_index1 = 0
+    max_index1 = -1
 
     for i in range(n):
-        if a[i] > a[max_index1]:
+        if max_index1 == -1 or a[i] > a[max_index1]:
             max_index1 = i
 
-    if max_index1 == 0:
-        max_index2 = 1
-    else:
-        max_index2 = 0
+    max_index2 = -1
 
     for j in range(n):
-        if a[j] != a[max_index1] and a[j] > a[max_index2]:
+        if a[j] != a[max_index1] and ( max_index2 == -1 or a[j] > a[max_index2]):
             max_index2 = j
 
     return a[max_index1] * a[max_index2]
@@ -37,7 +34,5 @@ def max_pairwise_product(n, a):
 if __name__ == '__main__':
     n = int(input())
     a = [int(x) for x in raw_input().split()]
-    assert (len(a) == n)
-    #print('naive', max_pairwise_product_naive(n, a))
-    #print('fast', max_pairwise_product(n, a))
-    print(max_pairwise_product(n,a))
+    assert(len(a) == n)
+    print(max_pairwise_product(n, a))
