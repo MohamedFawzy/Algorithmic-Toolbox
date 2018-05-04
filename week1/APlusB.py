@@ -1,4 +1,4 @@
-# Uses Python2
+# Uses python2
 
 import sys
 
