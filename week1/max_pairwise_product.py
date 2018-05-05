@@ -27,7 +27,7 @@ def max_pairwise_product(n, a):
     max_index2 = -1
 
     for j in range(n):
-        if a[j] != a[max_index1] and (max_index2 == -1 or a[j] > a[max_index2]):
+        if j != max_index1 and (max_index2 == -1 or a[j] > a[max_index2]):
             max_index2 = j
 
     return a[max_index1] * a[max_index2]
@@ -35,21 +35,21 @@ def max_pairwise_product(n, a):
 
 if __name__ == '__main__':
     ##### stress test as validation model for our algorithm ######
-    while (True):
-        n = random.randrange(2, 10)
-        print "generated random numbers ", n
-        a = []
-        for i in range(n):
-            a.append(i)
-
-        print "generated dictionary ", a
-        result1 = max_pairwise_product_naive(n, a)
-        result2 = max_pairwise_product(n, a)
-        if result1 != result2:
-            print "Wrong Answer Result ", result1, "Result2 ", result2
-            break
-        else:
-            print  "OK"
+    # while (True):
+    #     n = random.randrange(2, 100)
+    #     print "generated random numbers ", n
+    #     a = []
+    #     for i in range(n):
+    #         a.append(random.randrange(2, 100000))
+    #
+    #     print "generated dictionary ", a
+    #     result1 = max_pairwise_product_naive(n, a)
+    #     result2 = max_pairwise_product(n, a)
+    #     if result1 != result2:
+    #         print "Wrong Answer Result ", result1, "Result2 ", result2
+    #         break
+    #     else:
+    #         print  "OK"
     #### end stress testing #####
 
     n = int(input())
