@@ -20,13 +20,16 @@ def calc_fib(n):
     return f[n]
 
 if __name__ == '__main__':
+    n = int(input())
+    efficient = calc_fib(n)
+
     # stress testing for
-    while(True):
-        for n in range(0,46):
-            print("generated random parameter for fibonacci function is ", n)
-            naive = naive_calc_fib(n)
-            efficient = calc_fib(n)
-            print("comparing result for naive algorithm which is ", naive, " to efficient algorithm which is ", efficient)
-            if naive != efficient:
-                break
+    # while(True):
+    #     for n in range(0,46):
+    #         print("generated random parameter for fibonacci function is ", n)
+    #         naive = naive_calc_fib(n)
+    #         efficient = calc_fib(n)
+    #         print("comparing result for naive algorithm which is ", naive, " to efficient algorithm which is ", efficient)
+    #         if naive != efficient:
+    #             break
 
