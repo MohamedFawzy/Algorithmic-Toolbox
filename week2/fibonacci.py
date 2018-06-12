@@ -22,6 +22,7 @@ def calc_fib(n):
 if __name__ == '__main__':
     n = int(input())
     efficient = calc_fib(n)
+    print efficient
 
     # stress testing for
     # while(True):
