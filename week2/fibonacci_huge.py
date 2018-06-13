@@ -1,4 +1,4 @@
-# Uses python3
+# Uses python2
 
 def get_fibonacci_huge_naive(n, m):
     if n <= 1:
@@ -26,13 +26,13 @@ def get_fibonacci(n):
 
 def get_reminder(m):
 
-    previous =0
-    current = 1
+     previous =0
+     current = 1
 
-    for i in range(m * m +1):
-        previous, current = current, (previous + current) % m
-        if previous==0 and current==1:
-            return i +1
+     for i in range(m * m +1):
+         previous, current = current, (previous + current) % m
+         if previous==0 and current==1:
+             return i +1
 
 
 
