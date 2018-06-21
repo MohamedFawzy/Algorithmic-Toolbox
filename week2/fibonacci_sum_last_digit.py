@@ -1,5 +1,6 @@
 # Uses python2
-import sys
+import random
+import math
 
 
 def fibonacci_sum_naive(n):
@@ -29,7 +30,7 @@ def get_fibonacci(n):
         previous, current = current, previous + current
         sum += current
 
-    return sum
+    return sum % 10
 
 
 def get_reminder(m):
@@ -49,7 +50,18 @@ def get_fibonacci_huge(n):
 
 
 if __name__ == '__main__':
-    input = raw_input()
-    n = int(input)
-    print(fibonacci_sum_naive(n))
-    print(get_fibonacci_huge(n))
+    #input = raw_input()
+    #n = int(input)
+    #print(fibonacci_sum_naive(n))
+    #print(get_fibonacci_huge(n))
+    # stress testing
+    while(True):
+        # run 100 test cases with random numbers between 0, 10 power 14
+        for _ in range(0,100):
+            n = random.randrange(0, math.pow(10, 2))
+            naive_result = fibonacci_sum_naive(n)
+            good_result  = get_fibonacci_huge(n)
+            print "Result of naive is ", naive_result, " and for optimized version is ", good_result
+            if naive_result != good_result:
+                break
+
