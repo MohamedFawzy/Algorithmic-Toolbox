@@ -6,4 +6,4 @@ Algorithmic Toolbox practice
 - max pairwise product , find max pairwise product e.g [1,2,6,3,7] should return product(7,6)
 
 ### week2
-- fibonacci sequence
+- Fibonacci sequence
