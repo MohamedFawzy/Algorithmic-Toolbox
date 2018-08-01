@@ -18,10 +18,9 @@ def get_change(m):
             break
 
 
-    return m
+    return count
 
 
 if __name__ == '__main__':
     m = int(raw_input())
-    m = 28
     print(get_change(m))
