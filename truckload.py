@@ -13,11 +13,16 @@ def solution(w, t):
 
     for i in list(comp):
         if sum(i) == sum_weights:
-            print i
-            lst.append(max(i)-min(i))
+            i = i[::-1]
+            i = list(i)
+            i.append(max(i)-min(i))
+            lst.append(i)
 
 
-    return min(lst)
+    lst = sorted(lst, key=lambda i:[-i[0]])
+    print(lst)
+    # get min value from column three
+    return min(lst[3])
 
 
 if __name__ == '__main__':
