@@ -5,18 +5,26 @@ def sortTrucks(a):
 
    # get first two lists inside the list
    x=  a[0]
-   y = a[1]
+   if len(a) > 1:
+    y = a[1]
    # remove first two lists from the list of lists
-   del a[0:2]
+   if len(a)> 1:
+    del a[0:2]
+   else:
+    del a[0]
    # sort list of lists based on second element inside every list as descending order
    a.sort(key=lambda k: (-k[1]))
    #print(a)
    # delete last two items inside the list
-   del a[-2:]
+   if len(a) > 1:
+       del a[-2:]
+   else:
+       del a[-1:]
    #print(a)
    # add the items to list again
    a.append(x)
-   a.append(y)
+   if len(a)> 1:
+    a.append(y)
    #print(a)
    # sort them
    a = sorted(a, key=lambda i: [-i[0]])
@@ -43,11 +51,9 @@ def solution(w, t):
 
 
     lst = sorted(lst, key=lambda i:[-i[0]])
-    #print(lst)
     # get min value from column three
     lst = sortTrucks(lst)
     return min(min(lst))
-
 
 if __name__ == '__main__':
     input = sys.stdin.readline()
