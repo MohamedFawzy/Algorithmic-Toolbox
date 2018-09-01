@@ -22,7 +22,7 @@ def solution(w, t):
     lst = sorted(lst, key=lambda i:[-i[0]])
     print(lst)
     # get min value from column three
-    return min(lst[3])
+    return min(min(lst))
 
 
 if __name__ == '__main__':
