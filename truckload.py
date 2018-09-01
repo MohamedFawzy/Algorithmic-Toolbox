@@ -1,8 +1,9 @@
 import sys
 import itertools
 
-def sortTrucks(a):
-
+def sortTrucks(a, possible_combination, total_lst):
+   print(a)
+   indices = total_lst - possible_combination
    # get first two lists inside the list
    x=  a[0]
    if len(a) > 1:
@@ -14,10 +15,10 @@ def sortTrucks(a):
     del a[0]
    # sort list of lists based on second element inside every list as descending order
    a.sort(key=lambda k: (-k[1]))
-   #print(a)
+   print(a)
    # delete last two items inside the list
    if len(a) > 1:
-       del a[-2:]
+       del a[-indices:]
    else:
        del a[-1:]
    #print(a)
@@ -28,7 +29,7 @@ def sortTrucks(a):
    #print(a)
    # sort them
    a = sorted(a, key=lambda i: [-i[0]])
-   #print(a)
+   print(a)
    return a
 
 
@@ -52,8 +53,9 @@ def solution(w, t):
 
     lst = sorted(lst, key=lambda i:[-i[0]])
     # get min value from column three
-    lst = sortTrucks(lst)
-    return min(min(lst))
+    lst = sortTrucks(lst, possible_combinations, len(lst))
+    result = lst[-1:]
+    return result[0][t]
 
 if __name__ == '__main__':
     input = sys.stdin.readline()
