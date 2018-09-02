@@ -2,7 +2,7 @@ import sys
 import itertools
 
 def sortTrucks(a, possible_combination, total_lst):
-   print(a)
+   #print(a)
    indices = total_lst - possible_combination
    # get first two lists inside the list
    x=  a[0]
@@ -15,7 +15,7 @@ def sortTrucks(a, possible_combination, total_lst):
     del a[0]
    # sort list of lists based on second element inside every list as descending order
    a.sort(key=lambda k: (-k[1]))
-   print(a)
+   #print(a)
    # delete last two items inside the list
    if len(a) > 1:
        del a[-indices:]
@@ -29,7 +29,7 @@ def sortTrucks(a, possible_combination, total_lst):
    #print(a)
    # sort them
    a = sorted(a, key=lambda i: [-i[0]])
-   print(a)
+   #print(a)
    return a
 
 
@@ -58,10 +58,59 @@ def solution(w, t):
     return result[0][t]
 
 if __name__ == '__main__':
-    input = sys.stdin.readline()
-    # boxes weights
-    w = list(map(int, input.split()))
-    # number of trucks
-    t = int(sys.stdin.readline())
-    result = solution(w, t)
-    print(result)
+    boxes = [
+        [1, 2, 3, 4],
+        [1, 2, 3, 4, 5],
+        [1, 2, 3, 4, 5],
+        [3],
+        [1, 2, 3, 4, 5],
+        [2, 5],
+        [2, 3, 5],
+        [2, 2, 8],
+        [2, 3, 5],
+        [4, 5, 6, 7, 8],
+        [2, 5, 6, 7, 8, 14],
+        [2, 5, 5, 8, 10, 12, 18, 19, 20],
+        [2, 5, 5, 8, 10, 12, 18, 19, 21]
+
+    ]
+
+    trucks = [
+        3,
+        1,
+        3,
+        10,
+        10,
+        2,
+        2,
+        2,
+        3,
+        2,
+        3,
+        3,
+        3
+    ]
+
+    expected_result = [
+        1,
+        0,
+        0,
+        3,
+        5,
+        3,
+        0,
+        4,
+        3,
+        0,
+        0,
+        0,
+        1
+    ]
+
+    for i in range(len(trucks)):
+        result = solution(boxes[i], trucks[i])
+        if expected_result[i] != result:
+            print("Box of list ", boxes[i], " With trucks ", trucks[i], " Failed Output : ", result, " expected output ", expected_result[i])
+            #break
+        else:
+            print("Box of list ", boxes[i], " With trucks ", trucks[i], " Passed Output : ", result)
