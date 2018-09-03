@@ -5,19 +5,18 @@ import sys
 def optimal_summands(n):
     summands = []
     k = n  # marked as lower part
-    l = 1  # marked as upper part
     # write your code here
-    if n == 1 or n == 2:
-        summands.append(n)
-    else:
-        for i in range(k):
-            if k <= 2 * l:
-                summands.append(k)
-                break
-            else:
-                summands.append(l)
-                k = k - l
-                l = l + 1
+    for i in range(1, n + 1):
+        k = k - i
+        if k == 0:
+            summands.append(i)
+            break
+        if k <= i:
+            summands.append(k + i)
+            break
+        else:
+            summands.append(i)
+
     return summands
 
 
