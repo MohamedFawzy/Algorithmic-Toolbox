@@ -5,8 +5,9 @@ import sys
 def optimal_summands(n):
     summands = []
     k = n  # marked as lower part
+    i = 1
     # write your code here
-    for i in range(1, n + 1):
+    while (i < n + 1):
         k = k - i
         if k == 0:
             summands.append(i)
@@ -16,6 +17,7 @@ def optimal_summands(n):
             break
         else:
             summands.append(i)
+            i += 1
 
     return summands
 
