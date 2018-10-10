@@ -1,7 +1,6 @@
 # Uses python2
 import sys
 
-
 def merge(a, b, left, ave, right):
     i, j, k = left, ave, left
     count = 0
@@ -28,16 +27,14 @@ def merge(a, b, left, ave, right):
     return count
 
 
-
 def get_number_of_inversions(a, b, left, right):
     number_of_inversions = 0
-    if right - left <= 1:
+    if right <= left:
         return number_of_inversions
     ave = (left + right) // 2
     number_of_inversions += get_number_of_inversions(a, b, left, ave)
-    number_of_inversions += get_number_of_inversions(a, b, ave, right)
-    # write your code here
-    number_of_inversions += merge(a, b, left, ave+1, right)
+    number_of_inversions += get_number_of_inversions(a, b, ave + 1, right)
+    number_of_inversions += merge(a, b, left, ave + 1, right)
     return number_of_inversions
 
 
