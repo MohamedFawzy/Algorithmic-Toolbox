@@ -4,7 +4,6 @@ import sys
 
 
 def lcs2(a, b):
-    print(a, b)
     # write your code here
     # find the length of the strings
     m = len(a)
