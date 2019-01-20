@@ -4,28 +4,55 @@ import sys
 import threading
 
 
-def compute_height(n, parents):
-    # Replace this code with a faster implementation
-    max_height = 0
-    for vertex in range(n):
+class TreeHeight:
+    def read(self):
+        self.n = int(sys.stdin.readline())
+        self.parent = list(map(int, sys.stdin.readline().split()))
+        self.nodes = {}
+
+        for i in range(self.n):
+            self.nodes[i] = []
+
+        for i in range(self.n):
+            if self.parent[i] == -1:
+                pass
+            else:
+                self.nodes[self.parent[i]] += [i]
+
+    def compute_height(self):
+        root = None
+        try:
+            root = self.parent.index(-1)
+        except ValueError:
+            return 0
+        queue = []
+        queue.append(root)
         height = 0
-        current = vertex
-        while current != -1:
+
+        while True:
+            node_count = len(queue)
+            if node_count == 0:
+                return height
             height += 1
-            current = parents[current]
-        max_height = max(max_height, height)
-    return max_height
+
+            while node_count > 0:
+                node = queue[0]
+                queue.pop(0)
+                if self.nodes[node]:
+                    for v in self.nodes[node]:
+                        queue.append(v)
+                node_count -= 1
 
 
 def main():
-    n = int(input())
-    parents = list(map(int, input().split()))
-    print(compute_height(n, parents))
+    tree = TreeHeight()
+    tree.read()
+    print(tree.compute_height())
 
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
 # of bigger stack, we have to launch the computation in a new thread.
-sys.setrecursionlimit(10**7)  # max depth of recursion
-threading.stack_size(2**27)   # new thread will get stack of such size
+sys.setrecursionlimit(10 ** 7)  # max depth of recursion
+threading.stack_size(2 ** 27)  # new thread will get stack of such size
 threading.Thread(target=main).start()
